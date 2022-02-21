@@ -2,28 +2,31 @@ import os
 import getpass
 from tabnanny import check
 import time
-from datetime import datetime, date, time
+from datetime import datetime,date
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.keys import Keys
+
+def weekOfStudy():
+    if(datetime.today().date().day ):
+        print("Нечетная")
 
 def dayOfStudy():
     if(datetime.today().isoweekday()==1):
-        print("Monday")
+        print("Today is Monday")
+        weekOfStudy()
     if(datetime.today().isoweekday()==2):
-        print("Tuesday")
+        print("Today is Tuesday")
     if(datetime.today().isoweekday()==3):
-        print("Wednesday")
+        print("Today is Wednesday")
     if(datetime.today().isoweekday()==4):
-        print("Thursday")
+        print("Today is Thursday")
     if(datetime.today().isoweekday()==5):
-        print("Friday")
+        print("Today is Friday")
     if(datetime.today().isoweekday()==6):
-        print("Saturday")
+        print("Today is Saturday")
     if(datetime.today().isoweekday()==7):
-        print("Sunday")   
-
-
-
+        print("Today is Sunday")   
 
 def checkCredsMirea(log, passw):
     loadBar = "Trying to log in..."
@@ -32,13 +35,10 @@ def checkCredsMirea(log, passw):
     driver = webdriver.Chrome("chromedriver")
     driver.get("https://login.mirea.ru/login/?next=/oauth2/v1/authorize/%3Fresponse_type%3Dcode%26client_id%3DdnOh7sdtPxfyxzbxcMRLksWlCCE3WsgTfRY6AWKh%26redirect_uri%3Dhttps%253A%252F%252Fonline-edu.mirea.ru%252Flogin%252F%26scope%3Dbasic%2Bstudent")
     driver.find_element_by_id("id_login").send_keys(log)
-    driver.find_element_by_id("id_password").send_keys(passw)
-    if (driver.find_element_by_xpath("//option[text()='Войти']")==True):
-        print("yes")
-    else:
-        print("no")
+    driver.find_element_by_id("id_password").send_keys(passw+Keys.ENTER)
 
-    WebDriverWait(driver=driver, timeout=10).until(lambda x: x.execute_script("return document.readyState === 'complete'"))
+
+    WebDriverWait(driver=driver, timeout=1).until(lambda x: x.execute_script("return document.readyState === 'complete'"))
     error_message = "Incorrect username or password."
     errors = driver.find_elements_by_class_name("flash-error")
     print(e.text)
@@ -52,11 +52,11 @@ def checkCredsMirea(log, passw):
 def checkCredsLocal(log, passw):
     os.system('cls||clear')
     print('Wait. Checking your credentials...\n')
-    time.sleep(3)
+    time.sleep(2)
 
     if(log.find("@edu.mirea.ru")!= -1):
         print('Mail validation sucessful')
-        time.sleep(3)
+        time.sleep(2)
         os.system('cls||clear')
         checkCredsMirea(log,passw)
     else:
@@ -68,7 +68,7 @@ def checkCredsLocal(log, passw):
         else:
             os.system('cls||clear')
             print("Goodbye!")
-            time.sleep(3)
+            time.sleep(2)
 
 
 def task():
