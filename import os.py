@@ -24,6 +24,7 @@ def weekOfStudy(day,month,year,week):
         print('No stydy for today!!\n')
     if((weeks==1 and weeks==True and counterOfWeeks==5)or(weeks==1 and weeks==True and counterOfWeeks==9)(weeks==1 and weeks==True and counterOfWeeks==13)(weeks==1 and weeks==True and counterOfWeeks==15)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов п-п обработки и преобраз данных 9:00-10:30 \n\t\tМодели и методы принятия технических решений 10:40-12:10 \n\t Информационный технологии цифровой экономики 14:20-15:50\n')
+        
     if((weeks==1 and weeks==True)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов п-п обработки и преобраз данных 9:00-10:30 \n\t\tМодели и методы принятия технических решений 10:40-12:10 \n\t')
     if((weeks==2 and weeks==True)):
