@@ -10,15 +10,33 @@ from selenium.webdriver.common.keys import Keys
 
 def weekOfStudy(day,month,year,week):
     weeks=False
+    counterOfWeeks=0
     if (day >= 21 and day <= 26  and month ==2 and year == 2022 ):
-        print("Odd week")
+        print("Odd week\n")
         weeks=True
+        counterOfWeeks+=1
     if ((day >= 28 and month == 2 and year == 2022) or (day >=1 and day <= 6 and year == 2022 and month == 3 )):
-        print("Even week")
+        print("Even week\n")
         weeks=False
+        counterOfWeeks+=1
     
     if ((week==3 and weeks==True)or(week==4 and weeks==True)or(week==5 and weeks==True)or (week==6 and weeks==True)or(week==7 and weeks==True)or(week==1 and weeks==False)or(week==2 and weeks==False)or(week==5 and weeks==False)or(week==7 and weeks==False)):
         print('No stydy for today!!\n')
+    if((weeks==1 and weeks==True and counterOfWeeks==5)or(weeks==1 and weeks==True and counterOfWeeks==9)(weeks==1 and weeks==True and counterOfWeeks==13)(weeks==1 and weeks==True and counterOfWeeks==15)):
+        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов п-п обработки и преобраз данных 9:00-10:30 \n\t\tМодели и методы принятия технических решений 10:40-12:10 \n\t Информационный технологии цифровой экономики 14:20-15:50\n')
+    if((weeks==1 and weeks==True)):
+        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов п-п обработки и преобраз данных 9:00-10:30 \n\t\tМодели и методы принятия технических решений 10:40-12:10 \n\t')
+    if((weeks==2 and weeks==True)):
+        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tМетоды и средства защиты компьютерной информации 9:00-10:30 \n\t\tМетоды и средства защиты компьютерной информации 10:40-12:10 \n\t')
+    if((weeks==3 and weeks==False)):
+        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tОсновы антикоррупционной деятельности 9:00-10:30 \n\t\tБЖД 10:40-12:10\n\t Методы и средства взаимодействия компонент ПО 12:40-14:10\n')
+    if((weeks==4 and weeks==False)):
+        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tТехнологии Кроссплатформенного программирования 9:00-10:30 \n\tРазраб.мобильных компонентов анализа безопасного ПО 10:40-12:10\n\t Разраб.мобильных компонентов анализа безопасного ПО 12:40-14:10\n')
+    if((weeks==6 and weeks==False and counterOfWeeks==2)or(weeks==6 and weeks==False and counterOfWeeks==6)or(weeks==6 and weeks==False and counterOfWeeks==10)or(weeks==6 and weeks==False and counterOfWeeks==14)):
+        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов цифровой обработки данных 9:00-10:30  \n')
+    if((weeks==6 and weeks==False )):
+        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов цифровой обработки данных 9:00-10:30  \n')
+
 
 def dayOfStudy():
     if(datetime.today().isoweekday()==1):
@@ -45,7 +63,6 @@ def dayOfStudy():
 
 def checkCredsMirea(log, passw):
     loadBar = "Trying to log in..."
-    statusConnected = False
    
     driver = webdriver.Chrome("chromedriver")
     driver.get("https://login.mirea.ru/login/?next=/oauth2/v1/authorize/%3Fresponse_type%3Dcode%26client_id%3DdnOh7sdtPxfyxzbxcMRLksWlCCE3WsgTfRY6AWKh%26redirect_uri%3Dhttps%253A%252F%252Fonline-edu.mirea.ru%252Flogin%252F%26scope%3Dbasic%2Bstudent")
