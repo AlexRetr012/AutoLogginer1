@@ -1,5 +1,6 @@
 import os
 import getpass
+import calendar
 from tabnanny import check
 import time
 from datetime import datetime,date
@@ -7,26 +8,40 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 
-def weekOfStudy():
-    if(datetime.today().date().day ):
-        print("Нечетная")
+def weekOfStudy(day,month,year,week):
+    weeks=False
+    if (day >= 21 and day <= 26  and month ==2 and year == 2022 ):
+        print("Odd week")
+        weeks=True
+    if ((day >= 28 and month == 2 and year == 2022) or (day >=1 and day <= 6 and year == 2022 and month == 3 )):
+        print("Even week")
+        weeks=False
+    
+    if ((week==3 and weeks==True)or(week==4 and weeks==True)or(week==5 and weeks==True)or (week==6 and weeks==True)or(week==7 and weeks==True)or(week==1 and weeks==False)or(week==2 and weeks==False)or(week==5 and weeks==False)or(week==7 and weeks==False)):
+        print('No stydy for today!!\n')
 
 def dayOfStudy():
     if(datetime.today().isoweekday()==1):
         print("Today is Monday")
-        weekOfStudy()
+        weekOfStudy(datetime.today().day,datetime.today().month,datetime.today().year,datetime.today().isoweekday())
     if(datetime.today().isoweekday()==2):
         print("Today is Tuesday")
+        weekOfStudy(datetime.today().day,datetime.today().month,datetime.today().year,datetime.today().isoweekday())
     if(datetime.today().isoweekday()==3):
         print("Today is Wednesday")
+        weekOfStudy(datetime.today().day,datetime.today().month,datetime.today().year,datetime.today().isoweekday())
     if(datetime.today().isoweekday()==4):
         print("Today is Thursday")
+        weekOfStudy(datetime.today().day,datetime.today().month,datetime.today().year,datetime.today().isoweekday())
     if(datetime.today().isoweekday()==5):
         print("Today is Friday")
+        weekOfStudy(datetime.today().day,datetime.today().month,datetime.today().year,datetime.today().isoweekday())
     if(datetime.today().isoweekday()==6):
         print("Today is Saturday")
+        weekOfStudy(datetime.today().day,datetime.today().month,datetime.today().year,datetime.today().isoweekday())
     if(datetime.today().isoweekday()==7):
         print("Today is Sunday")   
+        weekOfStudy(datetime.today().day,datetime.today().month,datetime.today().year,datetime.today().isoweekday())
 
 def checkCredsMirea(log, passw):
     loadBar = "Trying to log in..."
