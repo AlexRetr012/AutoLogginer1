@@ -8,11 +8,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 def checkCredsMirea(log, passw):
     loadBar = "Trying to log in..."
     statusConnected = False
+   
     driver = webdriver.Chrome("chromedriver")
-    driver.get("https://login.mirea.ru/login/?next=/oauth2/v1/authorize/%3Fresponse_type%3Dcode%26client_id%3DdnOh7sdtPxfyxzbxcMRLksWlCCE3WsgTfRY6AWKh%26redirect_uri%3Dhttps%253A%252F%252Fonline-edu.mirea.ru%252Flogin%252F%26scope%3Dbasic%2Bstudent")
-    driver.find_element_by_id("id_login").send_keys(log)
-    driver.find_element_by_id("id_password").send_keys(passw)
-    driver.find_element_by_
+    driver.get("https://online-edu.mirea.ru/")
+    driver.find_element_by_id("login_username").send_keys(log)
+    driver.find_element_by_id("login_password").send_keys(passw)
+    driver.find_element_by_class_name("btn btn-primary btn-block").click()
 
 
 
