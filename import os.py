@@ -117,16 +117,6 @@ def checkCredsMirea(log, passw):
     driver.find_element_by_id("id_password").send_keys(passw+Keys.ENTER)
     os.system('cls||clear')
 
-    WebDriverWait(driver=driver, timeout=10).until(lambda x: x.execute_script("return document.readyState === 'complete'"))
-    error_message = "Указан неверный логин/пароль"
-    errors = driver.find_elements_by_class_name("errorlist nonfield")
-    print(errors)
-    os.system('cls||clear')
-    if any(error_message in e.text for e in errors):
-        print("[!] Login failed")
-    else:
-        print("[+] Login successful")
-
 def checkCredsLocal(log, passw):
     os.system('cls||clear')
     print('Wait. Checking your credentials...\n')
