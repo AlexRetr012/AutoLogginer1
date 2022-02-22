@@ -8,8 +8,11 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 
+def penetrationToWebinars(http):
+    print(http)
+
+
 def setForATimer(pair):
-    print("Now time >> " + time.strftime('%H:%M:%S',time_l))
     for p in pair:
         if p == 1:
             time_l=time.localtime()
@@ -35,11 +38,8 @@ def setForATimer(pair):
             time_l=time.localtime()
             if (time.strftime('%H:%M:%S',time_l) >= "19:30:00"):
                 print('Sixth pair is gone!\n')
+    print("Now time >> " + time.strftime('%H:%M:%S',time_l))
         
-
-
-
-
 def weekOfStudy(day,month,year,week):
     weeks=False
     counterOfWeeks=0
@@ -57,27 +57,33 @@ def weekOfStudy(day,month,year,week):
     if((week==1 and weeks==True and counterOfWeeks==5)or(week==1 and weeks==True and counterOfWeeks==9)or(week==1 and weeks==True and counterOfWeeks==13)or(week==1 and weeks==True and counterOfWeeks==15)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов п-п обработки и преобраз данных 9:00-10:30 \n\t\tМодели и методы принятия технических решений 10:40-12:10 \n\t Информационный технологии цифровой экономики 14:20-15:50\n')
         lessons = [1,2,4]
+        less_http = ["https://online-edu.mirea.ru/course/view.php?id=8785","https://online-edu.mirea.ru/course/view.php?id=8794","https://online-edu.mirea.ru/course/view.php?id=8880"]
     if((week==1 and weeks==True)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов п-п обработки и преобраз данных 9:00-10:30 \n\t\tМодели и методы принятия технических решений 10:40-12:10 \n\t')
         lessons = [1,2]
+        less_http = ["https://online-edu.mirea.ru/course/view.php?id=8785","https://online-edu.mirea.ru/course/view.php?id=8794"]
     if((week==2 and weeks==True)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tМетоды и средства защиты компьютерной информации 9:00-10:30 \n\tМетоды и средства защиты компьютерной информации 10:40-12:10 \n\t')
         lessons = [1,2]
+        less_http = ["https://online-edu.mirea.ru/course/view.php?id=8791","https://online-edu.mirea.ru/course/view.php?id=8791"]
     if((week==3 and weeks==False)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tОсновы антикоррупционной деятельности 9:00-10:30 \n\t\tБЖД 10:40-12:10\n\t Методы и средства взаимодействия компонент ПО 12:40-14:10\n')
         lessons=[1,2,3]
+        less_http = ["https://online-edu.mirea.ru/course/view.php?id=7948","https://online-edu.mirea.ru/course/view.php?id=563","https://online-edu.mirea.ru/course/view.php?id=8790"]
     if((week==4 and weeks==False)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tТехнологии Кроссплатформенного программирования 9:00-10:30 \n\tРазраб.мобильных компонентов анализа безопасного ПО 10:40-12:10\n\t Разраб.мобильных компонентов анализа безопасного ПО 12:40-14:10\n')
         lessons = [1,2,3]
+        less_http = ["https://online-edu.mirea.ru/course/view.php?id=8804","https://online-edu.mirea.ru/course/view.php?id=8800","https://online-edu.mirea.ru/course/view.php?id=8800"]
     if((week==6 and weeks==False and counterOfWeeks==2)or(week==6 and weeks==False and counterOfWeeks==6)or(week==6 and weeks==False and counterOfWeeks==10)or(week==6 and weeks==False and counterOfWeeks==14)):
-        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов цифровой обработки данных 9:00-10:30  \n')
+        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tКомпьютерная криминалистика 9:00-10:30 \n\tКомпьютерная криминалистика 10:40-12:10\n\tАлгоритмы компонентов цифровой обработки данных 12:40-14:10  \n')
         lessons = [1,2,3]
+        less_http = ["https://online-edu.mirea.ru/course/view.php?id=7824","https://online-edu.mirea.ru/course/view.php?id=7824","https://online-edu.mirea.ru/course/view.php?id=8786"]
     if((week==6 and weeks==False )):
-        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов цифровой обработки данных 9:00-10:30  \n')
-        lessons = [1]
+        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов цифровой обработки данных 12:40-14:10  \n')
+        lessons = [3]
+        less_http = ["https://online-edu.mirea.ru/course/view.php?id=8786"]
     setForATimer(lessons)
-
-
+    penetrationToWebinars(less_http)
 
 def dayOfStudy():
     if(datetime.today().isoweekday()==1):
@@ -111,17 +117,15 @@ def checkCredsMirea(log, passw):
     driver.find_element_by_id("id_password").send_keys(passw+Keys.ENTER)
     os.system('cls||clear')
 
-    WebDriverWait(driver=driver, timeout=1).until(lambda x: x.execute_script("return document.readyState === 'complete'"))
-    error_message = "Incorrect username or password."
-    errors = driver.find_elements_by_class_name("flash-error")
-    print(e.text)
+    WebDriverWait(driver=driver, timeout=10).until(lambda x: x.execute_script("return document.readyState === 'complete'"))
+    error_message = "Указан неверный логин/пароль"
+    errors = driver.find_elements_by_class_name("errorlist nonfield")
+    print(errors)
     os.system('cls||clear')
     if any(error_message in e.text for e in errors):
         print("[!] Login failed")
     else:
         print("[+] Login successful")
-
-
 
 def checkCredsLocal(log, passw):
     os.system('cls||clear')
@@ -143,7 +147,6 @@ def checkCredsLocal(log, passw):
             os.system('cls||clear')
             print("Goodbye!")
             time.sleep(2)
-
 
 def task():
     os.system('clear' if os.name == 'posix' else 'cls')
