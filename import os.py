@@ -180,7 +180,7 @@ def checkCredsLocal(log, passw):
 
 def task():
     os.system('clear' if os.name == 'posix' else 'cls')
-    print('Welcome to AutoLogginer Lite.\nWarning!We don`t collect/sell/store your logins & passwords \nVer 0.0.9(RFT Readt For Test Version)\n')
+    print('Welcome to AutoLogginer Lite.\nWarning!We don`t collect/sell/store your logins & passwords \nVer 0.1.0(RFT Readt For Test Version)\n')
     dayOfStudy()
     userCredL = input('Enter your MIREA login >> ')
     userCredP = getpass.getpass('Enter your MIREA password >> ')
