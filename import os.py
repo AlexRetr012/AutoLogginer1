@@ -8,37 +8,75 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 
-def penetrationToWebinars(http):
-    print(http)
+
+def penetrationToWebinars(http,less):
+    driver = webdriver.Chrome("chromedriver")
+    time_l=time.localtime()
+
+    count=0
+    for h in http:
+        count+=1
+    for p in less:
+        if p == 1:
+            if (time.strftime('%H:%M:%S',time_l) >= "10:30:00"):  
+                print('First pair is gone!\n')
+                break;
+            if (time.strftime('%H:%M:%S',time_l) >= "9:00:00"):
+                driver.get(http[1])
+        if p == 2:
+            if (time.strftime('%H:%M:%S',time_l) >= "12:10:00"):
+                print('Second pair is gone!\n')
+                break;
+            if (time.strftime('%H:%M:%S',time_l) >= "10:40:00"):
+                driver.get(http[2])
+        if p == 3:
+            if (time.strftime('%H:%M:%S',time_l) >= "14:10:00"):
+                print('Third pair is gone!\n')
+                break;
+            if (time.strftime('%H:%M:%S',time_l) >= "12:40:00"):
+                driver.get(http[3])
+        if p == 4:
+            if (time.strftime('%H:%M:%S',time_l) >= "15:50:00"):
+                print('Fourth pair is gone!\n')
+                break;
+            if (time.strftime('%H:%M:%S',time_l) >= "14:20:00"):
+                driver.get(http[4])
+        if p == 5:
+            if (time.strftime('%H:%M:%S',time_l) >= "17:50:00"):
+                print('Fifth pair is gone!\n')
+                break;
+            if (time.strftime('%H:%M:%S',time_l) >= "16:20:00"):
+                driver.get(http[5])
+        if p == 6:
+            if (time.strftime('%H:%M:%S',time_l) >= "19:30:00"):
+                print('Sixth pair is gone!\n')
+                break;
+            if (time.strftime('%H:%M:%S',time_l) >= "18:00:00"):
+                driver.get(http[6])
 
 
 def setForATimer(pair):
+    time_l=time.localtime()
     for p in pair:
         if p == 1:
-            time_l=time.localtime()
             if (time.strftime('%H:%M:%S',time_l) >= "10:30:00"):  
                 print('First pair is gone!\n')
         if p == 2:
-            time_l=time.localtime()
             if (time.strftime('%H:%M:%S',time_l) >= "12:10:00"):
                 print('Second pair is gone!\n')
         if p == 3:
-            time_l=time.localtime() 
             if (time.strftime('%H:%M:%S',time_l) >= "14:10:00"):
                 print('Third pair is gone!\n')
         if p == 4:
-            time_l=time.localtime()
             if (time.strftime('%H:%M:%S',time_l) >= "15:50:00"):
                 print('Fourth pair is gone!\n')
         if p == 5:
-            time_l=time.localtime()
             if (time.strftime('%H:%M:%S',time_l) >= "17:50:00"):
                 print('Fifth pair is gone!\n')
         if p == 6:
-            time_l=time.localtime()
             if (time.strftime('%H:%M:%S',time_l) >= "19:30:00"):
                 print('Sixth pair is gone!\n')
-    print("Now time >> " + time.strftime('%H:%M:%S',time_l))
+    print("Now time >> " + time.strftime('%H:%M:%S',time_l) + "\n")
         
 def weekOfStudy(day,month,year,week):
     weeks=False
@@ -51,28 +89,29 @@ def weekOfStudy(day,month,year,week):
         print("Even week\n")
         weeks=False
         counterOfWeeks+=1
-    
+    global lessons 
+    global less_http 
     if ((week==3 and weeks==True)or(week==4 and weeks==True)or(week==5 and weeks==True)or (week==6 and weeks==True)or(week==7 and weeks==True)or(week==1 and weeks==False)or(week==2 and weeks==False)or(week==5 and weeks==False)or(week==7 and weeks==False)):
         print('No stydy for today!!\n')
     if((week==1 and weeks==True and counterOfWeeks==5)or(week==1 and weeks==True and counterOfWeeks==9)or(week==1 and weeks==True and counterOfWeeks==13)or(week==1 and weeks==True and counterOfWeeks==15)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов п-п обработки и преобраз данных 9:00-10:30 \n\t\tМодели и методы принятия технических решений 10:40-12:10 \n\t Информационный технологии цифровой экономики 14:20-15:50\n')
-        lessons = [1,2,4]
-        less_http = ["https://online-edu.mirea.ru/course/view.php?id=8785","https://online-edu.mirea.ru/course/view.php?id=8794","https://online-edu.mirea.ru/course/view.php?id=8880"]
+        lessons= [1,2,4]
+        less_http= ["https://online-edu.mirea.ru/course/view.php?id=8785","https://online-edu.mirea.ru/course/view.php?id=8794","https://online-edu.mirea.ru/course/view.php?id=8880"]
     if((week==1 and weeks==True)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов п-п обработки и преобраз данных 9:00-10:30 \n\t\tМодели и методы принятия технических решений 10:40-12:10 \n\t')
-        lessons = [1,2]
-        less_http = ["https://online-edu.mirea.ru/course/view.php?id=8785","https://online-edu.mirea.ru/course/view.php?id=8794"]
+        lessons= [1,2]
+        less_http= ["https://online-edu.mirea.ru/course/view.php?id=8785","https://online-edu.mirea.ru/course/view.php?id=8794"]
     if((week==2 and weeks==True)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tМетоды и средства защиты компьютерной информации 9:00-10:30 \n\tМетоды и средства защиты компьютерной информации 10:40-12:10 \n\t')
         lessons = [1,2]
         less_http = ["https://online-edu.mirea.ru/course/view.php?id=8791","https://online-edu.mirea.ru/course/view.php?id=8791"]
     if((week==3 and weeks==False)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tОсновы антикоррупционной деятельности 9:00-10:30 \n\t\tБЖД 10:40-12:10\n\t Методы и средства взаимодействия компонент ПО 12:40-14:10\n')
-        lessons=[1,2,3]
-        less_http = ["https://online-edu.mirea.ru/course/view.php?id=7948","https://online-edu.mirea.ru/course/view.php?id=563","https://online-edu.mirea.ru/course/view.php?id=8790"]
+        lessons = [1,2,3]
+        less_http= ["https://online-edu.mirea.ru/course/view.php?id=7948","https://online-edu.mirea.ru/course/view.php?id=563","https://online-edu.mirea.ru/course/view.php?id=8790"]
     if((week==4 and weeks==False)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tТехнологии Кроссплатформенного программирования 9:00-10:30 \n\tРазраб.мобильных компонентов анализа безопасного ПО 10:40-12:10\n\t Разраб.мобильных компонентов анализа безопасного ПО 12:40-14:10\n')
-        lessons = [1,2,3]
+        lessons= [1,2,3]
         less_http = ["https://online-edu.mirea.ru/course/view.php?id=8804","https://online-edu.mirea.ru/course/view.php?id=8800","https://online-edu.mirea.ru/course/view.php?id=8800"]
     if((week==6 and weeks==False and counterOfWeeks==2)or(week==6 and weeks==False and counterOfWeeks==6)or(week==6 and weeks==False and counterOfWeeks==10)or(week==6 and weeks==False and counterOfWeeks==14)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tКомпьютерная криминалистика 9:00-10:30 \n\tКомпьютерная криминалистика 10:40-12:10\n\tАлгоритмы компонентов цифровой обработки данных 12:40-14:10  \n')
@@ -83,7 +122,6 @@ def weekOfStudy(day,month,year,week):
         lessons = [3]
         less_http = ["https://online-edu.mirea.ru/course/view.php?id=8786"]
     setForATimer(lessons)
-    penetrationToWebinars(less_http)
 
 def dayOfStudy():
     if(datetime.today().isoweekday()==1):
@@ -109,13 +147,15 @@ def dayOfStudy():
         weekOfStudy(datetime.today().day,datetime.today().month,datetime.today().year,datetime.today().isoweekday())
 
 def checkCredsMirea(log, passw):
-    loadBar = "Trying to log in..."
+    loadBar = "Trying to log in...\n"
    
     driver = webdriver.Chrome("chromedriver")
     driver.get("https://login.mirea.ru/login/?next=/oauth2/v1/authorize/%3Fresponse_type%3Dcode%26client_id%3DdnOh7sdtPxfyxzbxcMRLksWlCCE3WsgTfRY6AWKh%26redirect_uri%3Dhttps%253A%252F%252Fonline-edu.mirea.ru%252Flogin%252F%26scope%3Dbasic%2Bstudent")
     driver.find_element_by_id("id_login").send_keys(log)
     driver.find_element_by_id("id_password").send_keys(passw+Keys.ENTER)
     os.system('cls||clear')
+    penetrationToWebinars(lessons,less_http)
+    time.sleep(3600)
 
 def checkCredsLocal(log, passw):
     os.system('cls||clear')
