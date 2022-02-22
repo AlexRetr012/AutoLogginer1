@@ -8,6 +8,38 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 
+def setForATimer(pair):
+    print("Now time >> " + time.strftime('%H:%M:%S',time_l))
+    for p in pair:
+        if p == 1:
+            time_l=time.localtime()
+            if (time.strftime('%H:%M:%S',time_l) >= "10:30:00"):  
+                print('First pair is gone!\n')
+        if p == 2:
+            time_l=time.localtime()
+            if (time.strftime('%H:%M:%S',time_l) >= "12:10:00"):
+                print('Second pair is gone!\n')
+        if p == 3:
+            time_l=time.localtime() 
+            if (time.strftime('%H:%M:%S',time_l) >= "14:10:00"):
+                print('Third pair is gone!\n')
+        if p == 4:
+            time_l=time.localtime()
+            if (time.strftime('%H:%M:%S',time_l) >= "15:50:00"):
+                print('Fourth pair is gone!\n')
+        if p == 5:
+            time_l=time.localtime()
+            if (time.strftime('%H:%M:%S',time_l) >= "17:50:00"):
+                print('Fifth pair is gone!\n')
+        if p == 6:
+            time_l=time.localtime()
+            if (time.strftime('%H:%M:%S',time_l) >= "19:30:00"):
+                print('Sixth pair is gone!\n')
+        
+
+
+
+
 def weekOfStudy(day,month,year,week):
     weeks=False
     counterOfWeeks=0
@@ -15,28 +47,36 @@ def weekOfStudy(day,month,year,week):
         print("Odd week\n")
         weeks=True
         counterOfWeeks+=1
-    if ((day >= 28 and month == 2 and year == 2022) or (day >=1 and day <= 6 and year == 2022 and month == 3 )):
+    if ((day >= 28 and month == 2 and year == 2022) or (day >=1 and day <= 6 and year == 2022 and month == 3)):
         print("Even week\n")
         weeks=False
         counterOfWeeks+=1
     
     if ((week==3 and weeks==True)or(week==4 and weeks==True)or(week==5 and weeks==True)or (week==6 and weeks==True)or(week==7 and weeks==True)or(week==1 and weeks==False)or(week==2 and weeks==False)or(week==5 and weeks==False)or(week==7 and weeks==False)):
         print('No stydy for today!!\n')
-    if((weeks==1 and weeks==True and counterOfWeeks==5)or(weeks==1 and weeks==True and counterOfWeeks==9)(weeks==1 and weeks==True and counterOfWeeks==13)(weeks==1 and weeks==True and counterOfWeeks==15)):
+    if((week==1 and weeks==True and counterOfWeeks==5)or(week==1 and weeks==True and counterOfWeeks==9)or(week==1 and weeks==True and counterOfWeeks==13)or(week==1 and weeks==True and counterOfWeeks==15)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов п-п обработки и преобраз данных 9:00-10:30 \n\t\tМодели и методы принятия технических решений 10:40-12:10 \n\t Информационный технологии цифровой экономики 14:20-15:50\n')
-        
-    if((weeks==1 and weeks==True)):
+        lessons = [1,2,4]
+    if((week==1 and weeks==True)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов п-п обработки и преобраз данных 9:00-10:30 \n\t\tМодели и методы принятия технических решений 10:40-12:10 \n\t')
-    if((weeks==2 and weeks==True)):
-        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tМетоды и средства защиты компьютерной информации 9:00-10:30 \n\t\tМетоды и средства защиты компьютерной информации 10:40-12:10 \n\t')
-    if((weeks==3 and weeks==False)):
+        lessons = [1,2]
+    if((week==2 and weeks==True)):
+        print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tМетоды и средства защиты компьютерной информации 9:00-10:30 \n\tМетоды и средства защиты компьютерной информации 10:40-12:10 \n\t')
+        lessons = [1,2]
+    if((week==3 and weeks==False)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tОсновы антикоррупционной деятельности 9:00-10:30 \n\t\tБЖД 10:40-12:10\n\t Методы и средства взаимодействия компонент ПО 12:40-14:10\n')
-    if((weeks==4 and weeks==False)):
+        lessons=[1,2,3]
+    if((week==4 and weeks==False)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tТехнологии Кроссплатформенного программирования 9:00-10:30 \n\tРазраб.мобильных компонентов анализа безопасного ПО 10:40-12:10\n\t Разраб.мобильных компонентов анализа безопасного ПО 12:40-14:10\n')
-    if((weeks==6 and weeks==False and counterOfWeeks==2)or(weeks==6 and weeks==False and counterOfWeeks==6)or(weeks==6 and weeks==False and counterOfWeeks==10)or(weeks==6 and weeks==False and counterOfWeeks==14)):
+        lessons = [1,2,3]
+    if((week==6 and weeks==False and counterOfWeeks==2)or(week==6 and weeks==False and counterOfWeeks==6)or(week==6 and weeks==False and counterOfWeeks==10)or(week==6 and weeks==False and counterOfWeeks==14)):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов цифровой обработки данных 9:00-10:30  \n')
-    if((weeks==6 and weeks==False )):
+        lessons = [1,2,3]
+    if((week==6 and weeks==False )):
         print('Let`s study!Today`s routine is \n\t\t\t\tSubject\t\t\t\tTime\n\tАлгоритмы компонентов цифровой обработки данных 9:00-10:30  \n')
+        lessons = [1]
+    setForATimer(lessons)
+
 
 
 def dayOfStudy():
@@ -69,12 +109,13 @@ def checkCredsMirea(log, passw):
     driver.get("https://login.mirea.ru/login/?next=/oauth2/v1/authorize/%3Fresponse_type%3Dcode%26client_id%3DdnOh7sdtPxfyxzbxcMRLksWlCCE3WsgTfRY6AWKh%26redirect_uri%3Dhttps%253A%252F%252Fonline-edu.mirea.ru%252Flogin%252F%26scope%3Dbasic%2Bstudent")
     driver.find_element_by_id("id_login").send_keys(log)
     driver.find_element_by_id("id_password").send_keys(passw+Keys.ENTER)
-
+    os.system('cls||clear')
 
     WebDriverWait(driver=driver, timeout=1).until(lambda x: x.execute_script("return document.readyState === 'complete'"))
     error_message = "Incorrect username or password."
     errors = driver.find_elements_by_class_name("flash-error")
     print(e.text)
+    os.system('cls||clear')
     if any(error_message in e.text for e in errors):
         print("[!] Login failed")
     else:
