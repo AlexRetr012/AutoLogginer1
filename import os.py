@@ -1,6 +1,5 @@
 import os
 import getpass
-import calendar
 from tabnanny import check
 import time
 from datetime import datetime,date
@@ -53,6 +52,7 @@ def penetrationToWebinars(http,less):
                 break;
             if (time.strftime('%H:%M:%S',time_l) >= "18:00:00"):
                 driver.get(http[6])
+    os.system('cls||clear')
 
 
 def setForATimer(pair):
@@ -180,7 +180,7 @@ def checkCredsLocal(log, passw):
 
 def task():
     os.system('clear' if os.name == 'posix' else 'cls')
-    print('Welcome to AutoLogginer Lite.\nWarning!We don`t collect/sell/store your logins & passwords \nVer 0.0.1(before release)\n')
+    print('Welcome to AutoLogginer Lite.\nWarning!We don`t collect/sell/store your logins & passwords \nVer 0.0.9(RFT Readt For Test Version)\n')
     dayOfStudy()
     userCredL = input('Enter your MIREA login >> ')
     userCredP = getpass.getpass('Enter your MIREA password >> ')
